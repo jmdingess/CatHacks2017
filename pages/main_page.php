@@ -11,12 +11,32 @@
 			
 			if (!empty($_POST)) {
 				if (isset($_POST['pressed_1'])) {
-					$pressed_1 = $_POST['pressed_1'];
+					$pressed = 1;
 					
+				}
+				
+				if (isset($_POST['pressed_2'])) {
+					$pressed = 2;
+					
+				}
+
+				if (isset($_POST['pressed_3'])) {
+					$pressed = 3;
+					
+				}
+				
+				if (isset($_POST['pressed_4'])) {
+					$pressed = 4;
+					
+				}
+				
+				if (isset ($_POST['pressed_5'])) {
+					$pressed = 5;
 				}
 			}
 			else {
-				$pressed_1 = 0;
+				$pressed = 0;
+
 			}
 		?>
 		
@@ -36,16 +56,47 @@
 			
 			<div class="main-page-content">
 				<?php
-					if ($pressed_1==1) {
+					if ($pressed == 1) {
 						echo
 							'<div class="test">
-								Congratulations! You pressed a button!
-								
+								Button 1 Pressed.
+							</div>';
+					}
+					
+					if ($pressed == 2) {
+						echo
+							'<div class="test">
+								Button 2 Pressed.
+							</div>';
+					}
+					
+					if ($pressed == 3) {
+						echo
+							'<div class="test">
+								Button 3 Pressed.
+							</div>';
+					}
+					
+					if ($pressed == 4) {
+						echo
+							'<div class="test">
+								Button 4 Pressed.	
+							</div>';
+					}
+					
+					if ($pressed == 5) {
+						echo
+							'<div class="test">
+								Button 5 Pressed.
 							</div>';
 					}
 				?>
 				<form action="" method="post">
-					<input type="submit" value=1 name="pressed_1">
+					<input type="submit" value="BUTTON 1" name="pressed_1">
+					<input type="submit" value="BUTTON 2" name="pressed_2">
+					<input type="submit" value="BUTTON 3" name="pressed_3">
+					<input type="submit" value="BUTTON 4" name="pressed_4">
+					<input type="submit" value="BUTTON 5" name="pressed_5">
 				</form>
 			</div>
 		</div>
