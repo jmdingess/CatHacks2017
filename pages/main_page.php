@@ -6,6 +6,9 @@
 		
 		<?php
 			//Headers here
+			
+			
+			
 			if (!empty($_POST)) {
 				if (isset($_POST['meme'])) {
 					$meme = $_POST['meme'];
