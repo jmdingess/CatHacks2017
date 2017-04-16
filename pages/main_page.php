@@ -45,7 +45,7 @@
 			
 			
 			$params = array(
-				'id' => '1',
+				'id' => '23424977',
 				'exclude' => false
 			);
 			
@@ -125,49 +125,11 @@
 				
 				<?php
 					echo
-					'<p>$tweet</p>
+					'<p> . '$tweet . '</p>'
 				?>
 			</div>
 			
 			<div class="buttons">
-				<?php
-				
-					if ($pressed == 1) {
-						echo
-							'<div class="button-pressed">
-								Button 1 Pressed.
-							</div>';
-					}
-					
-					if ($pressed == 2) {
-						echo
-							'<div class="button-pressed">
-								Button 2 Pressed.
-							</div>';
-					}
-					
-					if ($pressed == 3) {
-						echo
-							'<div class="button-pressed">
-								Button 3 Pressed.
-							</div>';
-					}
-					
-					if ($pressed == 4) {
-						echo
-							'<div class="button-pressed">
-								Button 4 Pressed.	
-							</div>';
-					}
-					
-					if ($pressed == 5) {
-						echo
-							'<div class="button-pressed">
-								Button 5 Pressed.
-							</div>';
-					}
-				?>
-				
 				<?php
 				echo 
 				'<form action="" method="post">
@@ -180,6 +142,36 @@
 				
 				?>
 
+			</div>
+			
+			<div class="buttons-pressed">
+				<?php
+				
+					if ($pressed == 1) {
+						echo
+							'Button 1 Pressed.'
+					}
+					
+					if ($pressed == 2) {
+						echo
+							'Button 2 Pressed.'
+					}
+					
+					if ($pressed == 3) {
+						echo
+							'Button 3 Pressed.'
+					}
+					
+					if ($pressed == 4) {
+						echo
+							'Button 4 Pressed.'
+					}
+					
+					if ($pressed == 5) {
+						echo
+							'Button 5 Pressed.'
+					}
+				?>
 			</div>
 		</div>
 	</body>

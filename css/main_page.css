@@ -19,16 +19,21 @@ h1 {
 
 .buttons {
 	text-align: center;
-	font-size: 10px;
+	font-size: 16px;
 	color: black;
 	background-color: white;
 	display: inline-block;
 	border-radius: 8px;
 	border: 2px solid blue;
+	-webkit-transition-duration: 0.4s;
+	
+	/* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
 }
 
 .buttons:hover{
-	background-color: blue;
+	background-color: #008CBA; /*BLUE*/
 	color: white;
 }
 
