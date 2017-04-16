@@ -183,27 +183,33 @@
 			</div>
 			
 			<script type="text/javascript">
-			function myFunction(buttonno) {
-				document.getElementById("jsme").innerHTML = buttonno;
+			function buttonclick(buttonno, checktag, hashtag) {
+				if (buttonno - 1 == checktag){
+					document.getElementById("ans").innerHTML = "Correct!<br>The right hashtag was " + hashtag + ".<br>Click anywhere to continue.";
+				}
+				else {
+					document.getElementById("ans").innerHTML = "Incorrect!<br>The right hashtag was " + hashtag + ".<br>Click anywhere to continue.";
+				}
+				
 			}
 			</script>
 			
 			<div class="buttons">
 				<?php
 				echo '
-				<button class = "button button1" onclick="myFunction(1)" name="pressed_1"> ' . $hashtags[0] . ' </button>
-				<button class = "button button2" onclick="myFunction(2)" name="pressed_2"> ' . $hashtags[1] . ' </button>
-				<button class = "button button3" onclick="myFunction(3)" name="pressed_3"> ' . $hashtags[2] . ' </button>
-				<button class = "button button4" onclick="myFunction(4)" name="pressed_4"> ' . $hashtags[3] . ' </button>
-				<button class = "button button5" onclick="myFunction(5)" name="pressed_5"> ' . $hashtags[4] . ' </button>
+				<button class = "button button1" onclick="buttonclick(1, ' . $hashno . ', \'' . $hashtags[$hashno] . '\')" name="pressed_1"> ' . $hashtags[0] . ' </button>
+				<button class = "button button2" onclick="buttonclick(2, ' . $hashno . ', \'' . $hashtags[$hashno] . '\')" name="pressed_2"> ' . $hashtags[1] . ' </button>
+				<button class = "button button3" onclick="buttonclick(3, ' . $hashno . ', \'' . $hashtags[$hashno] . '\')" name="pressed_3"> ' . $hashtags[2] . ' </button>
+				<button class = "button button4" onclick="buttonclick(4, ' . $hashno . ', \'' . $hashtags[$hashno] . '\')" name="pressed_4"> ' . $hashtags[3] . ' </button>
+				<button class = "button button5" onclick="buttonclick(5, ' . $hashno . ', \'' . $hashtags[$hashno] . '\')" name="pressed_5"> ' . $hashtags[4] . ' </button>
 				';
 				
 				?>
 			</div>
 			
-			<p class="buttons-pressed" id="jsme"></p>
+			<p class="button-pressed" id="ans"></p>
 			
-			<div class="buttons-pressed">
+			<div class="button-pressed">
 				<?php
 				
 					if ($pressed == 1) {
