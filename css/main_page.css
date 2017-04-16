@@ -5,9 +5,7 @@ h1 {
 
 .stat-box {
 	text-align: center;
-	position: right;
-	border: 1px black;
-	border-radius: 2px;
+	margin:auto;
 }
 
 .tweet-box {

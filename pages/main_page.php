@@ -202,7 +202,7 @@
 			
 			<div class="stat-box">
 				<?php
-					echo '<p> Total: ' . $_SESSION['total'] . '<br> Correct: ' . $_SESSION['score'] . '</p>';
+					echo '<p> Total: ' . $_SESSION['total'] . ' •  Correct: ' . $_SESSION['score'] . '</p>';
 				?>
 			</div>
 			
@@ -229,14 +229,16 @@
 			
 			<script type="text/javascript">
 			function buttonclick(buttonno, checktag, hashtag) {
-				if (buttonno - 1 == checktag){
-					document.getElementById("ans").innerHTML = "Correct!<br>The right hashtag was " + hashtag + '.<br><form method="POST" action="">  <button type="submit" name="correct" value="1" class="button"> Click here to continue. </button> </form>';
+				if (document.getElementById("ans").innerHTML == "") {
+					if (buttonno - 1 == checktag){
+						document.getElementById("ans").innerHTML = "Correct!<br>The right hashtag was " + hashtag + '.<br><form method="POST" action="">  <button type="submit" name="correct" value="1" class="button"> Click here to continue. </button> </form>';
+					}
+					else {
+						document.getElementById("ans").innerHTML = "Incorrect!<br>The right hashtag was " + hashtag + '.<br><form method="POST" action="">  <button type="submit" name="correct" value="0" class="button"> Click here to continue. </button> </form>';
+					}
+					//document.getElementById("Overlay").style.width = "100%";
+					document.getElementById("embeddedtweet").style.display = "inline";
 				}
-				else {
-					document.getElementById("ans").innerHTML = "Incorrect!<br>The right hashtag was " + hashtag + '.<br><form method="POST" action="">  <button type="submit" name="correct" value="0" class="button"> Click here to continue. </button> </form>';
-				}
-				//document.getElementById("Overlay").style.width = "100%";
-				document.getElementById("embeddedtweet").style.display = "inline";
 			}
 			</script>
 			
