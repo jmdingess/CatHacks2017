@@ -124,20 +124,21 @@
 				</h1>
 				
 				<?php
-					echo
-					'<p> '. $tweet .' </p>';
+					//echo
+					//'<p> '. $tweet .' </p>';
 				?>
 			</div>
 			
 			<div class="buttons">
+			<button class="button button1">Green</button>
 				<?php
 				echo 
 				'<form action="" method="post">
-					<input type="submit" value=' . $hashtags[0] . ' name="pressed_1">
-					<input type="submit" value=' . $hashtags[1] . ' name="pressed_2">
-					<input type="submit" value=' . $hashtags[2] . ' name="pressed_3">
-					<input type="submit" value=' . $hashtags[3] . ' name="pressed_4">
-					<input type="submit" value=' . $hashtags[4] . ' name="pressed_5">
+					<button class = "buttons button1"> <input type="submit" value=' . $hashtags[0] . ' name="pressed_1"> </button>
+					<button class = "buttons button2"> <input type="submit" value=' . $hashtags[1] . ' name="pressed_2"> </button>
+					<button class = "buttons button3"> <input type="submit" value=' . $hashtags[2] . ' name="pressed_3"> </button>
+					<button class = "buttons button4"> <input type="submit" value=' . $hashtags[3] . ' name="pressed_4"> </button>
+					<button class = "buttons button5"> <input type="submit" value=' . $hashtags[4] . ' name="pressed_5"> </button>
 				</form>';
 				
 				?>

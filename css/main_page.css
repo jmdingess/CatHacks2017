@@ -17,6 +17,7 @@ h1 {
 	
 }
 
+
 .buttons {
 	text-align: center;
 	font-size: 16px;
@@ -32,10 +33,62 @@ h1 {
     cursor: pointer;
 }
 
-.buttons:hover{
-	background-color: #008CBA; /*BLUE*/
-	color: white;
+.button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
 }
+
+.button1:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+.button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+}
+
+.button2:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+.button3 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+}
+
+.button3:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+.button4 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+}
+
+.button4:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+.button5 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+}
+
+.button5:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+
 
 .button-pressed {
 	text-align: left;
