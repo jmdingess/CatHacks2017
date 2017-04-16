@@ -66,10 +66,10 @@
 				$i++;
 			}
 			if ($found < 5) {
-				die('Didn\'t find enough hashtags'
+				die('Didn\'t find enough hashtags');
 			}
 			
-			//for testing, maybe...
+			//for button_presseding, maybe...
 			//echo '<pre>'; print_r($json); echo '</pre><hr />';
 			
 			
@@ -118,40 +118,51 @@
 				</h1>
 			</div>
 			
-			<div class="main-page-content">
+			<div class="tweet-box">
+				<h1> 
+				Guess the hashtag for the following tweet:
+				</h1>
+				
+				<?php
+					echo
+					'<p>$tweet</p>
+				?>
+			</div>
+			
+			<div class="buttons">
 				<?php
 				
 					if ($pressed == 1) {
 						echo
-							'<div class="test">
+							'<div class="button-pressed">
 								Button 1 Pressed.
 							</div>';
 					}
 					
 					if ($pressed == 2) {
 						echo
-							'<div class="test">
+							'<div class="button-pressed">
 								Button 2 Pressed.
 							</div>';
 					}
 					
 					if ($pressed == 3) {
 						echo
-							'<div class="test">
+							'<div class="button-pressed">
 								Button 3 Pressed.
 							</div>';
 					}
 					
 					if ($pressed == 4) {
 						echo
-							'<div class="test">
+							'<div class="button-pressed">
 								Button 4 Pressed.	
 							</div>';
 					}
 					
 					if ($pressed == 5) {
 						echo
-							'<div class="test">
+							'<div class="button-pressed">
 								Button 5 Pressed.
 							</div>';
 					}
