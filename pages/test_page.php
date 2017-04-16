@@ -85,5 +85,5 @@
 		}
 	}
 	//echo $tweetText . '<br>' . $tweet['text'];
-	//echo '<pre>'; print_r($json); echo '</pre><hr />';
+	echo '<pre>'; print_r($json); echo '</pre><hr />';
 ?>

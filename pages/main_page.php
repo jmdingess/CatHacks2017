@@ -147,7 +147,7 @@
 				</h1>
 				
 				<?php
-					echo '<p> '. $tweetText .' </p>';
+					echo '<p> '. $tweetText . '<br><a href="https://twitter.com/' . $tweet['user']['screen_name'] . '/status/' . $tweet['id_str'] . '"> Original </a> </p>';
 				?>
 			</div>
 			
