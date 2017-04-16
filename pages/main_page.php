@@ -71,18 +71,30 @@
 				die('Didn\'t find enough hashtags');
 			}
 			
-			$params = array(
-				'q' => $searchtags[mt_rand(0, 4)]
+			$hashno = mt_rand(0, 4);
 			
+			$params = array(
+				'q' => $searchtags[$hashno],
+				'count' => 50
 			);
 			
 			$json = $auth->get('search/tweets', $params);
 			if (!$json) {
 				die('Error getting tweet');
 			}
-			$tweet = $json['statuses'][mt_rand(0, 14)];
 			
+			
+			$tweet = $json['statuses'][mt_rand(0, 49)];
 			$tweetText = $tweet['text'];
+			
+			
+			foreach (array_reverse($tweet['entities']['hashtags']) as $embeddedhash) {
+				if (strtolower($embeddedhash['text']) == strtolower(substr($hashtags[$hashno], 1))) {
+					$tweetText = substr($tweetText, 0, $embeddedhash['indices']['0']) . '<b>???</b>' . substr($tweetText, $embeddedhash['indices']['1']);
+				}
+			}
+			//Delete all hashtags
+			/*
 			for ($i = 0; $i < strlen($tweetText); $i++) {
 				if ($tweetText[$i] == '#') {
 					$j = 0;
@@ -91,7 +103,7 @@
 					}
 					$tweetText = substr($tweetText, 0, $i) . '???' . substr($tweetText, $i+$j);
 				}
-			}
+			}*/
 			//echo $tweetText . '<br>' . $tweet['text'];
 			//echo '<pre>'; print_r($json); echo '</pre><hr />';
 			
@@ -147,7 +159,7 @@
 				</h1>
 				
 				<?php
-					echo '<p> '. $tweetText . '<br><a href="https://twitter.com/' . $tweet['user']['screen_name'] . '/status/' . $tweet['id_str'] . '"> Original </a> </p>';
+					echo '<p> '. $tweetText . '<br><a href="https://twitter.com/' . $tweet['user']['screen_name'] . '/status/' . $tweet['id_str'] . '" target=_blank> Original </a> </p>';
 				?>
 			</div>
 			
