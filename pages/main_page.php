@@ -24,7 +24,25 @@
 			if (!isset($_SESSION['total'])){
 				$_SESSION['total'] = 0;
 			}
-				
+			if (!isset($_SESSION['location'])) {
+				$_SESSION['location'] = '23424977'; /*ID For US Region*/
+			}
+			
+			if(!empty($_POST)) {
+				if (isset($_POST['correct'])) {
+					$_SESSION['total'] = $_SESSION['total'] + 1;
+					if ($_POST['correct'] == '1') {
+						$_SESSION['score'] = $_SESSION['score'] + 1;
+					}
+				}
+				if (isset($_POST['location'])) {
+					$_SESSION['location'] = $_POST['location'];
+				}
+				if (isset($_POST['reset'])) {
+					$_SESSION['score'] = 0;
+					$_SESSION['total'] = 0;
+				}
+			}
 			
 			/* Accessing Twitter API */
 			
@@ -66,9 +84,8 @@
 			 */
 			$auth = new SingleUserAuth($credentials, new ArraySerializer());
 			
-			
 			$params = array(
-				'id' => '23424977', /*ID For US Region*/
+				'id' => $_SESSION['location'], 
 				'exclude' => false
 			);
 			
@@ -111,6 +128,7 @@
 				'q' => $searchtags[$hashno],
 				'count' => 100
 			);
+			
 			
 			$json = $auth->get('search/tweets', $params);
 			if (!$json) {
@@ -193,14 +211,7 @@
 				$tweetText = $str;
 			}
 			
-			if(!empty($_POST)) {
-				if (isset($_POST['correct'])) {
-					$_SESSION['total'] = $_SESSION['total'] + 1;
-					if ($_POST['correct'] == '1') {
-						$_SESSION['score'] = $_SESSION['score'] + 1;
-					}
-				}
-			}
+			
 			
 			
 		?>
@@ -222,6 +233,24 @@
 			
 		</div> -->
 		<div id="main-page" class="container">
+			<div class="flags">
+				<form action="" method="post">
+				<?php
+					echo '
+					<button class = "flag" type="submit" value="23424977" name="location">United States</button>
+					<button class = "flag" type="submit" value="23424936" name="location">Russia</button>
+					<button class = "flag" type="submit" value="23424829" name="location">Germany</button>
+					<button class = "flag" type="submit" value="23424975" name="location">United Kingdom</button>
+					<button class = "flag" type="submit" value="23424856" name="location">Japan</button>	
+					<button class = "flag" type="submit" value="23424848" name="location">India</button>
+					<button class = "flag" type="submit" value="23424768" name="location">Brazil</button>
+					<button class = "flag" type="submit" value="23424908" name="location">Nigeria</button>	
+					<button class = "flag" type="submit" value="23424748" name="location">Australia</button>
+					';
+					
+					?>
+				</form>
+			</div>
 			<div class="main-page-title">
 				<h1>
 					Welcome to Tweet Street!
@@ -229,9 +258,12 @@
 			</div>
 			
 			<div class="stat-box">
-				<?php
-					echo '<p>Correct: ' . $_SESSION['score'] . ' •  Total: ' . $_SESSION['total'] . '</p>';
-				?>
+				<form action="" method="post">
+					<?php
+						echo '<p>Correct: ' . $_SESSION['score'] . ' •  Total: ' . $_SESSION['total'] . '</p>
+							<button class = "flag" type="submit" value="" name="reset">Reset Scores</button>';
+					?>
+				</form>
 			</div>
 			
 			<div class="tweet-box">

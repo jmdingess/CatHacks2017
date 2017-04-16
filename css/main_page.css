@@ -152,3 +152,27 @@ h1 {
 .embeddedtweet {
 	display: none;
 }
+
+.flag {
+	margin: auto;
+	text-align: center;
+	/*font-size: 16px;*/
+	display: inline-block;
+	border-radius: 8px;
+	margin-top: 10px;
+	-webkit-transition-duration: 0.4s;
+	
+	/* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+	
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+	font-size: 16px;
+}
+
+.flag:hover {
+    background-color: #008CBA;
+    color: white;
+}
