@@ -149,7 +149,7 @@
 		<div id="main-page" class="container">
 			<div class="main-page-title">
 				<h1>
-					Welcome to tweet street!
+					Welcome to Tweet Street!
 				</h1>
 			</div>
 			
@@ -159,7 +159,7 @@
 				</h1>
 				
 				<?php
-					echo '<p> '. $tweetText . '<br><a href="https://twitter.com/' . $tweet['user']['screen_name'] . '/status/' . $tweet['id_str'] . '" target=_blank> Original </a> </p>';
+					echo '<p> '. $tweetText . '<br> <a href="https://twitter.com/' . $tweet['user']['screen_name'] . '/status/' . $tweet['id_str'] . '" target=_blank> Original </a> </p>';
 				?>
 			</div>
 			

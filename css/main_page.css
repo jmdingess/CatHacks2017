@@ -3,6 +3,7 @@ h1 {
   font-size: 75px;
 }
 
+
 .tweet-box {
 	text-align: center;
 }
@@ -14,8 +15,16 @@ h1 {
 
 .tweet-box p {
 	border: 2px solid black;
+	border-radius: 8px;
+	background: #FFFFFF;
+	color: black;
+	
+	width: 75%;
+	height: 10%;
+	padding: 8px;
 	
 }
+
 
 .buttons {
 	text-align: center;
