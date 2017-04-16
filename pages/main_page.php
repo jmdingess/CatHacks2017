@@ -130,7 +130,7 @@
 				if ($tweetText[$i] == '#') {
 					$match = 1;
 					for ($j = 0; $j < strlen($hashtags[$hashno]) AND $i + $j < strlen($tweetText); $j++) {
-						if ($tweetText[$i+$j] != $hashtags[$hashno][$j]) {
+						if (strtolower($tweetText[$i+$j]) != strtolower($hashtags[$hashno][$j])) {
 							$match = 0;
 						}
 					}
