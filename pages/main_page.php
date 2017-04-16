@@ -12,8 +12,14 @@
 		<?php
 			//Headers here
 			
+			//Establish score variable
+			session_start();
 			
+			if (!isset($_SESSION['score'])){
+				$_SESSION['score'] = 0;
+			}
 			
+				
 			
 			/* Accessing Twitter API */
 	
@@ -118,35 +124,7 @@
 			//echo '<pre>'; print_r($json); echo '</pre><hr />';
 			
 			
-			if (!empty($_POST)) {
-				if (isset($_POST['pressed_1'])) {
-					$pressed = 1;
-					
-				}
-				
-				if (isset($_POST['pressed_2'])) {
-					$pressed = 2;
-					
-				}
-
-				if (isset($_POST['pressed_3'])) {
-					$pressed = 3;
-					
-				}
-				
-				if (isset($_POST['pressed_4'])) {
-					$pressed = 4;
-					
-				}
-				
-				if (isset ($_POST['pressed_5'])) {
-					$pressed = 5;
-				}
-			}
-			else {
-				$pressed = 0;
-
-			}
+			
 		?>
 		
 		<!-- css stylesheets -->
@@ -209,35 +187,7 @@
 			
 			<p class="button-pressed" id="ans"></p>
 			
-			<div class="button-pressed">
-				<?php
-				
-					if ($pressed == 1) {
-						echo
-							'Button 1 Pressed.';
-					}
-					
-					if ($pressed == 2) {
-						echo
-							'Button 2 Pressed.';
-					}
-					
-					if ($pressed == 3) {
-						echo
-							'Button 3 Pressed.';
-					}
-					
-					if ($pressed == 4) {
-						echo
-							'Button 4 Pressed.';
-					}
-					
-					if ($pressed == 5) {
-						echo
-							'Button 5 Pressed.';
-					}
-				?>
-			</div>
+			
 			
 		</div>
 	</body>
