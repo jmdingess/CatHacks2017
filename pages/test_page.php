@@ -37,29 +37,53 @@
 	
 	
 	$params = array(
-		'id' => '1',
+		'id' => '23424977',
 		'exclude' => false
 	);
 	
 	$json = $auth->get('trends/place', $params);
 	if (!$json) {
-		die('Error');
+		die('Error getting hashtags');
 	}
 	
 	$hashtags = array("", "", "", "", "");
+	$searchtags = array("", "", "", "", "");
 	
 	$i = 0;
 	$found = 0;
 	while ($i < 50 AND $found < 5) {
 		if ($json['0']['trends'][$i]['name'][0] == '#') {
 			$hashtags[$found] = $json['0']['trends'][$i]['name'];
+			$searchtags[$found] = $json['0']['trends'][$i]['query'];
 			$found++;
 		}
 		$i++;
 	}
 	if ($found < 5) {
-		die('Didn\'t find enough hashtags'
+		die('Didn\'t find enough hashtags');
 	}
 	
+	$params = array(
+		'q' => $searchtags[mt_rand(0, 4)]
+	
+	);
+	
+	$json = $auth->get('search/tweets', $params);
+	if (!$json) {
+		die('Error getting tweet');
+	}
+	$tweet = $json['statuses'][mt_rand(0, 14)];
+	
+	$tweetText = $tweet['text'];
+	for ($i = 0; $i < strlen($tweetText); $i++) {
+		if ($tweetText[$i] == '#') {
+			$j = 0;
+			while ($i+$j < strlen($tweetText) AND $tweetText[$i+$j] != ' ') {
+				$j++;
+			}
+			$tweetText = substr($tweetText, 0, $i) . '???' . substr($tweetText, $i+$j);
+		}
+	}
+	//echo $tweetText . '<br>' . $tweet['text'];
 	//echo '<pre>'; print_r($json); echo '</pre><hr />';
 ?>
