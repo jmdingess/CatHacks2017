@@ -21,13 +21,6 @@
 	</head>
 	
 	<body>
-		<!--<div id="Overlay" class="overlay">
-			
-			<form action="" class="overlayform" method="post">
-				<button type="submit" class="overlaybutton"> </button>
-			</form>
-			
-		</div> -->
 		<div id="main-page" class="container">
 			<div class="flags">
 				<form action="" method="post">
@@ -91,7 +84,6 @@
 					else {
 						document.getElementById("ans").innerHTML = "Incorrect!<br>The right hashtag was " + hashtag + '.<br><form method="POST" action="">  <button type="submit" name="correct" value="0" class="button continuebutton"> Click here to continue. </button> </form>';
 					}
-					//document.getElementById("Overlay").style.width = "100%";
 					document.getElementById("embeddedtweet").style.display = "inline";
 				}
 			}
