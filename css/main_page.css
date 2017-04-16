@@ -22,9 +22,13 @@ h1 {
 	width: 75%;
 	height: 10%;
 	padding: 8px;
-	
+	margin:auto;
 }
 
+.tweet-box img {
+	max-width: 75%;
+	max-height: 75%;
+}
 
 .buttons {
 	text-align: center;
