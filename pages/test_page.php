@@ -74,14 +74,14 @@
 	if (!$json) {
 		die('Error getting tweet');
 	}
-	if (count($json['statuses']) < 50) {
-		die('Didn\'t get enough tweets! Got ' . count($json['statuses']) . ' and expected 50!');
+	if (count($json['statuses']) == 0) {
+		die('Didn\'t get any tweets!');
 	}
-	$tweet = $json['statuses'][mt_rand(0, 49)];
+	$tweet = $json['statuses'][mt_rand(0, count($json['statuses']))];
 	$tweetText = $tweet['text'];
 	foreach (array_reverse($tweet['entities']['hashtags']) as $embeddedhash) {
 		if (strtolower($embeddedhash['text']) == strtolower(substr($hashtags[$hashno], 1))) {
-			$tweetText = substr($tweetText, 0, $embeddedhash['indices']['0']) . '<b>???</b>' . substr($tweetText, $embeddedhash['indices']['1']);
+			$tweetText = mb_substr($tweetText, 0, $embeddedhash['indices']['0']) . '<b>???</b>' . mb_substr($tweetText, $embeddedhash['indices']['1']);
 		}
 	}
 	
