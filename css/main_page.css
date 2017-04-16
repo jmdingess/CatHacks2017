@@ -153,6 +153,9 @@ h1 {
 	display: none;
 }
 
+.flags {
+	text-align: center;
+}
 .flag {
 	margin: auto;
 	text-align: center;
