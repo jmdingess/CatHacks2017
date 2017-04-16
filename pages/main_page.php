@@ -133,11 +133,11 @@
 				<?php
 				echo 
 				'<form action="" method="post">
-					<button class = "button button1"> <input type="submit" value=' . $hashtags[0] . ' name="pressed_1"> </button>
-					<button class = "button button2"> <input type="submit" value=' . $hashtags[1] . ' name="pressed_2"> </button>
-					<button class = "button button3"> <input type="submit" value=' . $hashtags[2] . ' name="pressed_3"> </button>
-					<button class = "button button4"> <input type="submit" value=' . $hashtags[3] . ' name="pressed_4"> </button>
-					<button class = "button button5"> <input type="submit" value=' . $hashtags[4] . ' name="pressed_5"> </button>
+					<button class = "button button1" type="submit" name="pressed_1"> ' . $hashtags[0] . ' </button>
+					<button class = "button button1" type="submit" name="pressed_2"> ' . $hashtags[1] . ' </button>
+					<button class = "button button1" type="submit" name="pressed_3"> ' . $hashtags[2] . ' </button>
+					<button class = "button button1" type="submit" name="pressed_4"> ' . $hashtags[3] . ' </button>
+					<button class = "button button1" type="submit" name="pressed_5"> ' . $hashtags[4] . ' </button>
 				</form>';
 				
 				?>
