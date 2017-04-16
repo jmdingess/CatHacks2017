@@ -159,7 +159,16 @@
 				</h1>
 				
 				<?php
-					echo '<p> '. $tweetText . '<br> <a href="https://twitter.com/' . $tweet['user']['screen_name'] . '/status/' . $tweet['id_str'] . '" target=_blank> Original </a> </p>';
+					echo '<p> '. $tweetText . '<br>';
+					if (array_key_exists('media', $tweet['entities'])) {
+						foreach ($tweet['entities']['media'] as $embeddedmedia) {
+							if ($embeddedmedia['type'] == 'photo') {
+								echo 
+								'<img src="' . $embeddedmedia['media_url_https'] . '"><br>';
+							}
+						}
+					}
+					echo '<a href="https://twitter.com/' . $tweet['user']['screen_name'] . '/status/' . $tweet['id_str'] . '" target=_blank> Original </a> </p>';
 				?>
 			</div>
 			
