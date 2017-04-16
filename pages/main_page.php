@@ -91,13 +91,19 @@
 							</div>';
 					}
 				?>
-				<form action="" method="post">
-					<input type="submit" value="BUTTON 1" name="pressed_1">
-					<input type="submit" value="BUTTON 2" name="pressed_2">
-					<input type="submit" value="BUTTON 3" name="pressed_3">
-					<input type="submit" value="BUTTON 4" name="pressed_4">
-					<input type="submit" value="BUTTON 5" name="pressed_5">
-				</form>
+				
+				<?php
+				echo 
+				'<form action="" method="post">
+					<input type="submit" value=' . $hashtags[0] . ' name="pressed_1">
+					<input type="submit" value=' . $hashtags[1] . ' name="pressed_2">
+					<input type="submit" value=' . $hashtags[2] . ' name="pressed_3">
+					<input type="submit" value=' . $hashtags[3] . ' name="pressed_4">
+					<input type="submit" value=' . $hashtags[4] . ' name="pressed_5">
+				</form>'	
+				
+				?>
+
 			</div>
 		</div>
 	</body>
