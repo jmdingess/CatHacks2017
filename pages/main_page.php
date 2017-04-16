@@ -26,7 +26,7 @@
 			if (file_exists(__DIR__ . '/../TwitterOAuth/vendor/autoload.php') ) {
 			require __DIR__ . '/../TwitterOAuth/vendor/autoload.php';
 			} else {
-				die("I was right")
+				die("I was right");
 			}
 
 			use TwitterOAuth\Auth\SingleUserAuth;
