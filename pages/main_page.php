@@ -125,7 +125,7 @@
 				
 				<?php
 					echo
-					'<p> '. $tweet .' </p>'
+					'<p> '. $tweet .' </p>';
 				?>
 			</div>
 			
@@ -138,7 +138,7 @@
 					<input type="submit" value=' . $hashtags[2] . ' name="pressed_3">
 					<input type="submit" value=' . $hashtags[3] . ' name="pressed_4">
 					<input type="submit" value=' . $hashtags[4] . ' name="pressed_5">
-				</form>'	
+				</form>';
 				
 				?>
 
@@ -149,27 +149,27 @@
 				
 					if ($pressed == 1) {
 						echo
-							'Button 1 Pressed.'
+							'Button 1 Pressed.';
 					}
 					
 					if ($pressed == 2) {
 						echo
-							'Button 2 Pressed.'
+							'Button 2 Pressed.';
 					}
 					
 					if ($pressed == 3) {
 						echo
-							'Button 3 Pressed.'
+							'Button 3 Pressed.';
 					}
 					
 					if ($pressed == 4) {
 						echo
-							'Button 4 Pressed.'
+							'Button 4 Pressed.';
 					}
 					
 					if ($pressed == 5) {
 						echo
-							'Button 5 Pressed.'
+							'Button 5 Pressed.';
 					}
 				?>
 			</div>
