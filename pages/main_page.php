@@ -125,7 +125,7 @@
 				
 				<?php
 					echo
-					'<p> . '$tweet . '</p>'
+					'<p> '. $tweet .' </p>'
 				?>
 			</div>
 			
