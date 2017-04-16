@@ -110,7 +110,7 @@
 			
 			foreach (array_reverse($tweet['entities']['hashtags']) as $embeddedhash) {
 				if (strtolower($embeddedhash['text']) == strtolower(substr($hashtags[$hashno], 1))) {
-					$tweetText = mb_substr($tweetText, 0, $embeddedhash['indices']['0']) . '<b>???</b>' . mb_substr($tweetText, $embeddedhash['indices']['1']);
+					$tweetText = substr($tweetText, 0, $embeddedhash['indices']['0']) . '<b>???</b>' . substr($tweetText, $embeddedhash['indices']['1']);
 				}
 			}
 			//Delete all hashtags
