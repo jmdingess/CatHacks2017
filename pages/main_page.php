@@ -72,15 +72,15 @@
 				die('Error');
 			}
 			
-			$hashtags = array("", "", "", "", "");
-			$searchtags = array("", "", "", "", "");
+			$allhashtags = array();
+			$allsearchtags = array();
 			
 			$i = 0;
 			$found = 0;
-			while ($i < 50 AND $found < 5) {
+			while ($i < count($json['0']['trends'])) {
 				if ($json['0']['trends'][$i]['name'][0] == '#') {
-					$hashtags[$found] = $json['0']['trends'][$i]['name'];
-					$searchtags[$found] = $json['0']['trends'][$i]['query'];
+					array_push($allhashtags, $json['0']['trends'][$i]['name']);
+					array_push($allsearchtags, $json['0']['trends'][$i]['query']);
 					$found++;
 				}
 				$i++;
@@ -88,6 +88,17 @@
 			if ($found < 5) {
 				die('Didn\'t find enough hashtags');
 			}
+			
+			$hashtags = array();
+			$searchtags = array();
+			for ($i = 0; $i < 5; $i++) {
+				$n = mt_rand(0, $found-1 - $i);
+				array_push($hashtags, $allhashtags[$n]);
+				array_splice($allhashtags, $n, 1);
+				array_push($searchtags, $allsearchtags[$n]);
+				array_splice($allsearchtags, $n, 1);
+			}
+			
 			
 			$hashno = mt_rand(0, 4);
 			
@@ -107,20 +118,19 @@
 			$tweet = $json['statuses'][mt_rand(0, count($json['statuses'])-1)];
 			$tweetText = $tweet['text'];
 			
-			
+			/*
 			foreach (array_reverse($tweet['entities']['hashtags']) as $embeddedhash) {
 				if (strtolower($embeddedhash['text']) == strtolower(substr($hashtags[$hashno], 1))) {
 					$tweetText = mb_substr($tweetText, 0, $embeddedhash['indices']['0']) . '<b>???</b>' . mb_substr($tweetText, $embeddedhash['indices']['1']);
 				}
 			}
-			
+			*/
 			//Delete hashtags
-			/*
 			for ($i = 0; $i < strlen($tweetText); $i++) {
 				if ($tweetText[$i] == '#') {
 					$match = 1;
-					for ($j = 0; $j < strlen($hashtags[$hashno]); $j++ {
-						if ($tweetText[$i+$j] != $hashtags[$hashno][$j] {
+					for ($j = 0; $j < strlen($hashtags[$hashno]) AND $i + $j < strlen($tweetText); $j++) {
+						if ($tweetText[$i+$j] != $hashtags[$hashno][$j]) {
 							$match = 0;
 						}
 					}
@@ -128,12 +138,24 @@
 						//remove from $tweetText[$i] to $tweetText[$i+strlen($hashno)]
 						//  would recommend a for a loop if a function can't do it
 						//Then replace it with bolded '???' 
-						$tweetText = str_replace($hashtags[$hashno], '<b>???</b>', $tweetText);
+						$str = "";
+						$x = 0;
+						while ($x < $i) {
+							$str  = $str . $tweetText[$x];
+							$x++;
+						}
+						$str = $str . '<b>???</b>';
+						$x += $j;
+						while ($x < strlen($tweetText)) {
+							$str = $str . $tweetText[$x];
+							$x++;
+						}
+						$tweetText = $str;
 					}
 					
 					//$tweetText = substr($tweetText, 0, $i) . '???' . substr($tweetText, $i+$j);
 				}
-			}*/
+			}
 			//$tweetText = str_replace($hashtags[$hashno], '<b>???</b>', $tweetText);
 			//echo $tweetText . '<br>' . $tweet['text'];
 			//echo '<pre>'; print_r($json); echo '</pre><hr />';
@@ -149,13 +171,13 @@
 	</head>
 	
 	<body>
-		<div id="Overlay" class="overlay">
+		<!--<div id="Overlay" class="overlay">
 			
 			<form action="" class="overlayform" method="post">
 				<button type="submit" class="overlaybutton"> </button>
 			</form>
 			
-		</div>
+		</div> -->
 		<div id="main-page" class="container">
 			<div class="main-page-title">
 				<h1>
@@ -178,19 +200,20 @@
 							}
 						}
 					}
-					echo '<a href="https://twitter.com/' . $tweet['user']['screen_name'] . '/status/' . $tweet['id_str'] . '" target=_blank> Original </a> </p>';
+					echo '</p>';
 				?>
 			</div>
 			
 			<script type="text/javascript">
 			function buttonclick(buttonno, checktag, hashtag) {
 				if (buttonno - 1 == checktag){
-					document.getElementById("ans").innerHTML = "Correct!<br>The right hashtag was " + hashtag + ".<br>Click anywhere to continue.";
+					document.getElementById("ans").innerHTML = "Correct!<br>The right hashtag was " + hashtag + '.<br><a href="">Click here to continue.</a>';
 				}
 				else {
-					document.getElementById("ans").innerHTML = "Incorrect!<br>The right hashtag was " + hashtag + ".<br>Click anywhere to continue.";
+					document.getElementById("ans").innerHTML = "Incorrect!<br>The right hashtag was " + hashtag + '.<br><a href="">Click here to continue.</a>';
 				}
-				document.getElementById("Overlay").style.width = "100%";
+				//document.getElementById("Overlay").style.width = "100%";
+				document.getElementById("embeddedtweet").style.display = "inline";
 			}
 			</script>
 			
@@ -209,8 +232,16 @@
 			
 			<p class="button-pressed" id="ans"></p>
 			
-			
-			
+			<div class="embeddedtweet" id="embeddedtweet">
+				<?php
+					$params = array(
+						'url' => 'https://twitter.com/' . $tweet['user']['screen_name'] . '/status/' . $tweet['id_str'],
+						'align' => 'center'
+					);
+					$json = $auth->get('statuses/oembed', $params);
+					echo str_replace('display: block', 'none', $json['html']);
+				?>
+			</div>
 		</div>
 	</body>
 </html>

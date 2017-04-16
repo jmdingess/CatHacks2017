@@ -88,18 +88,39 @@
 	
 	
 	*/
-	//Deletes all hashtags
-	/*
+	//Delete hashtags
+	
 	for ($i = 0; $i < strlen($tweetText); $i++) {
 		if ($tweetText[$i] == '#') {
-			$j = 0;
-			while ($i+$j < strlen($tweetText) AND $tweetText[$i+$j] != ' ') {
-				$j++;
+			$match = 1;
+			for ($j = 0; $j < strlen($hashtags[$hashno]); $j++) {
+				if ($i + $j == strlen($tweetText) OR $tweetText[$i+$j] != $hashtags[$hashno][$j]) {
+					$match = 0;
+				}
 			}
-			$tweetText = substr($tweetText, 0, $i) . '???' . substr($tweetText, $i+$j);
+			if ($match == 1) {
+				//remove from $tweetText[$i] to $tweetText[$i+strlen($hashno)]
+				//  would recommend a for a loop if a function can't do it
+				//Then replace it with bolded '???' 
+				$str = "";
+				$x = 0;
+				while ($x < $i) {
+					$str  = $str . $tweetText[$x];
+					$x++;
+				}
+				$str = $str . '<b>???</b>';
+				$x += $j;
+				while ($x < strlen($tweetText)) {
+					$str = $str . $tweetText[$x];
+					$x++;
+				}
+				$tweetText = $str;
+			}
+			
+			//$tweetText = substr($tweetText, 0, $i) . '???' . substr($tweetText, $i+$j);
 		}
-	}*/
-	$tweetText = str_replace($hashtags[$hashno], '<b>???</b>', $tweetText);
+	}
+	//$tweetText = str_replace($hashtags[$hashno], '<b>???</b>', $tweetText);
 	
 	
 	echo $tweetText . '<br>' . $tweet['text'];
