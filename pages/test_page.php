@@ -74,7 +74,7 @@
 	if (!$json) {
 		die('Error getting tweet');
 	}
-	if (count($json['statuses'] != 50)) {
+	if (count($json['statuses']) < 50) {
 		die('Didn\'t get enough tweets! Got ' . count($json['statuses']) . ' and expected 50!');
 	}
 	$tweet = $json['statuses'][mt_rand(0, 49)];

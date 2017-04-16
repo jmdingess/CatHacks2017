@@ -4,8 +4,16 @@
 		<title> Tweet Street </title>
 		<meta charset="UTF-8">
 		
+		<!-- Javascript headers -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		
 		<?php
 			//Headers here
+			
+			
+			
 			
 			/* Accessing Twitter API */
 	
@@ -174,19 +182,26 @@
 				?>
 			</div>
 			
+			<script type="text/javascript">
+			function myFunction(buttonno) {
+				document.getElementById("jsme").innerHTML = buttonno;
+			}
+			</script>
+			
 			<div class="buttons">
 				<?php
-				echo 
-				'<form action="" method="post">
-					<button class = "button button1" type="submit" name="pressed_1"> ' . $hashtags[0] . ' </button>
-					<button class = "button button1" type="submit" name="pressed_2"> ' . $hashtags[1] . ' </button>
-					<button class = "button button1" type="submit" name="pressed_3"> ' . $hashtags[2] . ' </button>
-					<button class = "button button1" type="submit" name="pressed_4"> ' . $hashtags[3] . ' </button>
-					<button class = "button button1" type="submit" name="pressed_5"> ' . $hashtags[4] . ' </button>
-				</form>';
+				echo '
+				<button class = "button button1" onclick="myFunction(1)" name="pressed_1"> ' . $hashtags[0] . ' </button>
+				<button class = "button button2" onclick="myFunction(2)" name="pressed_2"> ' . $hashtags[1] . ' </button>
+				<button class = "button button3" onclick="myFunction(3)" name="pressed_3"> ' . $hashtags[2] . ' </button>
+				<button class = "button button4" onclick="myFunction(4)" name="pressed_4"> ' . $hashtags[3] . ' </button>
+				<button class = "button button5" onclick="myFunction(5)" name="pressed_5"> ' . $hashtags[4] . ' </button>
+				';
 				
 				?>
 			</div>
+			
+			<p class="buttons-pressed" id="jsme"></p>
 			
 			<div class="buttons-pressed">
 				<?php
@@ -217,6 +232,7 @@
 					}
 				?>
 			</div>
+			
 		</div>
 	</body>
 </html>
