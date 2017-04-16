@@ -45,7 +45,7 @@
 			
 			
 			$params = array(
-				'id' => '23424977',
+				'id' => '23424977', /*ID For US Region*/
 				'exclude' => false
 			);
 			
@@ -130,19 +130,17 @@
 			</div>
 			
 			<div class="buttons">
-			<button class="button button1">Green</button>
 				<?php
 				echo 
 				'<form action="" method="post">
-					<button class = "buttons button1"> <input type="submit" value=' . $hashtags[0] . ' name="pressed_1"> </button>
-					<button class = "buttons button2"> <input type="submit" value=' . $hashtags[1] . ' name="pressed_2"> </button>
-					<button class = "buttons button3"> <input type="submit" value=' . $hashtags[2] . ' name="pressed_3"> </button>
-					<button class = "buttons button4"> <input type="submit" value=' . $hashtags[3] . ' name="pressed_4"> </button>
-					<button class = "buttons button5"> <input type="submit" value=' . $hashtags[4] . ' name="pressed_5"> </button>
+					<button class = "button button1"> <input type="submit" value=' . $hashtags[0] . ' name="pressed_1"> </button>
+					<button class = "button button2"> <input type="submit" value=' . $hashtags[1] . ' name="pressed_2"> </button>
+					<button class = "button button3"> <input type="submit" value=' . $hashtags[2] . ' name="pressed_3"> </button>
+					<button class = "button button4"> <input type="submit" value=' . $hashtags[3] . ' name="pressed_4"> </button>
+					<button class = "button button5"> <input type="submit" value=' . $hashtags[4] . ' name="pressed_5"> </button>
 				</form>';
 				
 				?>
-
 			</div>
 			
 			<div class="buttons-pressed">
