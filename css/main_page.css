@@ -41,6 +41,7 @@ h1 {
 	display: inline-block;
 	border-radius: 8px;
 	border: none;
+	margin-top: 10px;
 	-webkit-transition-duration: 0.4s;
 	
 	/* Safari */
