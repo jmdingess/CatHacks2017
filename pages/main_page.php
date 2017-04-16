@@ -12,13 +12,18 @@
 		<?php
 			//Headers here
 			
+			
+			
+			
 			//Establish score variable
 			session_start();
 			
 			if (!isset($_SESSION['score'])){
 				$_SESSION['score'] = 0;
 			}
-			
+			if (!isset($_SESSION['total'])){
+				$_SESSION['total'] = 0;
+			}
 				
 			
 			/* Accessing Twitter API */
@@ -104,7 +109,7 @@
 			
 			$params = array(
 				'q' => $searchtags[$hashno],
-				'count' => 50
+				'count' => 100
 			);
 			
 			$json = $auth->get('search/tweets', $params);
@@ -160,6 +165,14 @@
 			//echo $tweetText . '<br>' . $tweet['text'];
 			//echo '<pre>'; print_r($json); echo '</pre><hr />';
 			
+			if(!empty($_POST)) {
+				if (isset($_POST['correct'])) {
+					$_SESSION['total'] = $_SESSION['total'] + 1;
+					if ($_POST['correct'] == '1') {
+						$_SESSION['score'] = $_SESSION['score'] + 1;
+					}
+				}
+			}
 			
 			
 		?>
@@ -168,6 +181,8 @@
 		<link rel="stylesheet" href="../css/main_page.css" type="text/css">
 		<link rel="stylesheet" href="../css/main.css" type="text/css">
 		
+		<!-- favicon -->
+		<link rel="shortcut icon" href=="../images/favicon.ico">
 	</head>
 	
 	<body>
@@ -185,10 +200,18 @@
 				</h1>
 			</div>
 			
+			<div class="stat-box">
+				<?php
+					echo '<p> Total: ' . $_SESSION['total'] . '<br> Correct: ' . $_SESSION['score'] . '</p>';
+				?>
+			</div>
+			
 			<div class="tweet-box">
 				<h1> 
 				Guess the hashtag for the following tweet:
 				</h1>
+				
+				
 				
 				<?php
 					echo '<p> '. $tweetText . '<br>';
@@ -207,10 +230,10 @@
 			<script type="text/javascript">
 			function buttonclick(buttonno, checktag, hashtag) {
 				if (buttonno - 1 == checktag){
-					document.getElementById("ans").innerHTML = "Correct!<br>The right hashtag was " + hashtag + '.<br><a href="">Click here to continue.</a>';
+					document.getElementById("ans").innerHTML = "Correct!<br>The right hashtag was " + hashtag + '.<br><form method="POST" action="">  <button type="submit" name="correct" value="1" class="button"> Click here to continue. </button> </form>';
 				}
 				else {
-					document.getElementById("ans").innerHTML = "Incorrect!<br>The right hashtag was " + hashtag + '.<br><a href="">Click here to continue.</a>';
+					document.getElementById("ans").innerHTML = "Incorrect!<br>The right hashtag was " + hashtag + '.<br><form method="POST" action="">  <button type="submit" name="correct" value="0" class="button"> Click here to continue. </button> </form>';
 				}
 				//document.getElementById("Overlay").style.width = "100%";
 				document.getElementById("embeddedtweet").style.display = "inline";

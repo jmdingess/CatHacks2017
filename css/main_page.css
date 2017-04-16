@@ -3,6 +3,12 @@ h1 {
   font-size: 75px;
 }
 
+.stat-box {
+	text-align: center;
+	position: right;
+	border: 1px black;
+	border-radius: 2px;
+}
 
 .tweet-box {
 	text-align: center;
