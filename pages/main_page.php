@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="../css/main.css" type="text/css">
 		
 		<!-- favicon -->
-		<link rel="icon" href=="../images/favicon.ico">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	</head>
 	
 	<body>
