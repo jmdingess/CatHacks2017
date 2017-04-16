@@ -79,6 +79,7 @@
 	}
 	$tweet = $json['statuses'][mt_rand(0, count($json['statuses']))];
 	$tweetText = $tweet['text'];
+	/*
 	foreach (array_reverse($tweet['entities']['hashtags']) as $embeddedhash) {
 		if (strtolower($embeddedhash['text']) == strtolower(substr($hashtags[$hashno], 1))) {
 			$tweetText = substr($tweetText, 0, $embeddedhash['indices']['0']) . '<b>???</b>' . substr($tweetText, $embeddedhash['indices']['1']);
@@ -86,7 +87,7 @@
 	}
 	
 	
-	
+	*/
 	//Deletes all hashtags
 	/*
 	for ($i = 0; $i < strlen($tweetText); $i++) {
@@ -98,7 +99,7 @@
 			$tweetText = substr($tweetText, 0, $i) . '???' . substr($tweetText, $i+$j);
 		}
 	}*/
-	
+	$tweetText = str_replace($hashtags[$hashno], '<b>???</b>', $tweetText);
 	
 	
 	echo $tweetText . '<br>' . $tweet['text'];

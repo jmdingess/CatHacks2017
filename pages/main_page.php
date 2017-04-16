@@ -110,20 +110,31 @@
 			
 			foreach (array_reverse($tweet['entities']['hashtags']) as $embeddedhash) {
 				if (strtolower($embeddedhash['text']) == strtolower(substr($hashtags[$hashno], 1))) {
-					$tweetText = substr($tweetText, 0, $embeddedhash['indices']['0']) . '<b>???</b>' . substr($tweetText, $embeddedhash['indices']['1']);
+					$tweetText = mb_substr($tweetText, 0, $embeddedhash['indices']['0']) . '<b>???</b>' . mb_substr($tweetText, $embeddedhash['indices']['1']);
 				}
 			}
-			//Delete all hashtags
+			
+			//Delete hashtags
 			/*
 			for ($i = 0; $i < strlen($tweetText); $i++) {
 				if ($tweetText[$i] == '#') {
-					$j = 0;
-					while ($i+$j < strlen($tweetText) AND $tweetText[$i+$j] != ' ') {
-						$j++;
+					$match = 1;
+					for ($j = 0; $j < strlen($hashtags[$hashno]); $j++ {
+						if ($tweetText[$i+$j] != $hashtags[$hashno][$j] {
+							$match = 0;
+						}
 					}
-					$tweetText = substr($tweetText, 0, $i) . '???' . substr($tweetText, $i+$j);
+					if ($match == 1) {
+						//remove from $tweetText[$i] to $tweetText[$i+strlen($hashno)]
+						//  would recommend a for a loop if a function can't do it
+						//Then replace it with bolded '???' 
+						$tweetText = str_replace($hashtags[$hashno], '<b>???</b>', $tweetText);
+					}
+					
+					//$tweetText = substr($tweetText, 0, $i) . '???' . substr($tweetText, $i+$j);
 				}
 			}*/
+			//$tweetText = str_replace($hashtags[$hashno], '<b>???</b>', $tweetText);
 			//echo $tweetText . '<br>' . $tweet['text'];
 			//echo '<pre>'; print_r($json); echo '</pre><hr />';
 			
@@ -138,6 +149,13 @@
 	</head>
 	
 	<body>
+		<div id="Overlay" class="overlay">
+			
+			<form action="" class="overlayform" method="post">
+				<button type="submit" class="overlaybutton"> </button>
+			</form>
+			
+		</div>
 		<div id="main-page" class="container">
 			<div class="main-page-title">
 				<h1>
@@ -172,7 +190,7 @@
 				else {
 					document.getElementById("ans").innerHTML = "Incorrect!<br>The right hashtag was " + hashtag + ".<br>Click anywhere to continue.";
 				}
-				
+				document.getElementById("Overlay").style.width = "100%";
 			}
 			</script>
 			

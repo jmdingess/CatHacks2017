@@ -104,7 +104,31 @@ h1 {
     color: white;
 }
 
+.overlay {
+	height: 98%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	background-color: transparent; /*rgba(0,0,0, 0);  Color3 + opacity */
+	overflow-x: hidden;
+}
 
+.overlayform {
+	height: 100%;
+	width: 100%;
+	background-color: transparent;
+}
+
+.overlaybutton {
+	height: 100%;
+	width: 100%;
+	display: inline-block;
+	border-radius: 8px;
+	border: none;
+	background-color: transparent;
+}
 
 .button-pressed {
 	text-align: center;
