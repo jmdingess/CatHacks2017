@@ -9,6 +9,7 @@ h1 {
 
 .tweet-box h1 {
 	font-size: 20px;
+	color: black
 }
 
 .tweet-box p {
@@ -19,9 +20,20 @@ h1 {
 .buttons {
 	text-align: center;
 	font-size: 10px;
+	color: black;
+	background-color: white;
+	display: inline-block;
+	border-radius: 8px;
+	border: 2px solid blue;
+}
+
+.buttons:hover{
+	background-color: blue;
+	color: white;
 }
 
 .button-pressed {
 	text-align: left;
 	font-size: 20px;
+	color: black;
 }
